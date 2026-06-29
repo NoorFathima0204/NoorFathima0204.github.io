@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)file:///C:/Users/SHAIK%20MOHAMMED%20ABDAL/Downloads/noor_portfolio_3.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noor Fathima — Software Engineer</title>
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #0f0f0f;
+    --ink-soft:   #444;
+    --ink-muted:  #888;
+    --bg:         #f7f5f0;
+    --bg-card:    #ffffff;
+    --accent:     #2a52be;
+    --accent-dim: #dce4f7;
+    --rule:       #e0ddd8;
+    --mono:       'JetBrains Mono', monospace;
+    --serif:      'DM Serif Display', serif;
+    --sans:       'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247,245,240,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 7rem 2rem 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .hero-inner { width: 100%; }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1.0;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.2s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-tagline {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--ink-soft);
+    font-weight: 300;
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.35s forwards;
+  }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.45s forwards;
+  }
+  .badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.55s forwards;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.65rem 1.4rem;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    font-family: var(--sans);
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #1e3d99; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--rule);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+    opacity: 0;
+    animation: fadeUp 0.7s 0.65s forwards;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.2rem;
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.15;
+    margin-bottom: 3rem;
+    color: var(--ink);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .about-text p strong { color: var(--ink); font-weight: 600; }
+  .awards-list { list-style: none; }
+  .award-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .award-item:last-child { border-bottom: none; }
+  .award-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .award-title { font-weight: 600; font-size: 13px; color: var(--ink); }
+  .award-sub { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+  /* PROJECT */
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+  }
+  .project-header {
+    background: linear-gradient(135deg, #0f0f0f 0%, #1e3a8a 100%);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .project-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+  }
+  .project-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .project-subtitle { font-size: 13px; color: rgba(255,255,255,0.6); }
+  .project-body { padding: 2rem 2.5rem; }
+  .project-desc {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .project-highlights { list-style: none; margin-bottom: 1.5rem; }
+  .project-highlights li {
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding: 0.35rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .project-highlights li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 11px;
+  }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .tech-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 0.25rem 0.6rem;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    color: var(--ink-soft);
+  }
+  .project-awards { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .award-chip {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    background: #fef9c3;
+    border: 1px solid #fde047;
+    border-radius: 20px;
+    color: #854d0e;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-group {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-pill {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    background: var(--bg);
+    border-radius: 20px;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+  }
+
+  /* EDUCATION */
+  .edu-timeline { display: flex; flex-direction: column; gap: 1px; }
+  .edu-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-muted);
+    padding-top: 4px;
+  }
+  .edu-degree {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .edu-school { font-size: 13px; color: var(--ink-soft); margin-bottom: 0.4rem; }
+  .edu-score {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* CONTACT */
+  .contact-card {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .contact-headline {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .contact-headline em { font-style: italic; color: #7da4f5; }
+  .contact-sub { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.8rem;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: #7da4f5; }
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .edu-item { grid-template-columns: 1fr; gap: 0.4rem; }
+    .contact-card { grid-template-columns: 1fr; padding: 2rem; }
+    .hero-stats { gap: 1.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">noorfathima0204.github.io</span>
+  <ul class="nav-links">
+    <li><a href="file:///C:/Users/SHAIK%20MOHAMMED%20ABDAL/Downloads/noor_portfolio_3.html#about">About</a></li>
+    <li><a href="file:///C:/Users/SHAIK%20MOHAMMED%20ABDAL/Downloads/noor_portfolio_3.html#project">Project</a></li>
+    <li><a href="file:///C:/Users/SHAIK%20MOHAMMED%20ABDAL/Downloads/noor_portfolio_3.html#skills">Skills</a></li>
+    <li><a href="file:///C:/Users/SHAIK%20MOHAMMED%20ABDAL/Downloads/noor_portfolio_3.html#education">Education</a></li>
+    <li><a href="file:///C:/Users/SHAIK%20MOHAMMED%20ABDAL/Downloads/noor_portfolio_3.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Available for remote opportunities</p>
+    <h1 class="hero-name">Noor <em>Fathima</em></h1>
+    <p class="hero-tagline">Software Engineer &amp; AI/ML Developer — building clean, impactful systems from backend to deep learning.</p>
+    <div class="hero-badges">
+      <span class="badge">Python</span>
+      <span class="badge">Django</span>
+      <span class="badge">REST APIs</span>
+      <span class="badge">TensorFlow</span>
+      <span class="badge">React.js</span>
+      <span class="badge">SQL</span>
+      <span class="badge">IEEE Published</span>
+    </div>
+    <div class="hero-cta">
+      <a href="file:///C:/Users/SHAIK%20MOHAMMED%20ABDAL/Downloads/noor_portfolio_3.html#contact" class="btn btn-primary">↓ Get in touch</a>
+      <a href="file:///C:/Users/SHAIK%20MOHAMMED%20ABDAL/Downloads/noor_portfolio_3.html#project" class="btn btn-outline">View my work</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">8.60</div>
+        <div class="stat-label">CGPA / 10</div>
+      </div>
+      <div>
+        <div class="stat-num">1st</div>
+        <div class="stat-label">Inter-College Prize</div>
+      </div>
+      <div>
+        <div class="stat-num">IEEE</div>
+        <div class="stat-label">Published 2025</div>
+      </div>
+      <div>
+        <div class="stat-num">2×</div>
+        <div class="stat-label">Conference Awards</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <p class="section-eyebrow">Who I am</p>
+    <h2 class="section-title">Engineer by training,<br><em style="font-family:var(--serif);font-style:italic">problem-solver</em> by nature.</h2>
+  </div>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>I'm a <strong>Computer Science &amp; Engineering graduate</strong> from Dr. T. Thimmaiah Institute of Technology (graduating 2026, CGPA 8.60), passionate about building software that solves real problems.</p>
+      <p>My work spans <strong>backend development</strong> (Python, Django, REST APIs), <strong>frontend</strong> (HTML5, CSS3, JavaScript, React.js), and <strong>AI/ML</strong> (TensorFlow, Keras, Swin Transformer) — giving me full-stack visibility across the engineering lifecycle.</p>
+      <p>My final-year project on <strong>AI-powered pneumonia detection</strong> took me through the entire process: dataset curation, model architecture decisions, training pipelines, performance benchmarking, and academic publication — all the way to winning 1st Prize at an inter-college expo.</p>
+      <p>I'm looking for a <strong>remote-first software engineering role</strong> where I can grow fast, contribute meaningfully, and learn from experienced teams.</p>
+    </div>
+    <div>
+      <ul class="awards-list">
+        <li class="award-item">
+          <span class="award-icon">🥇</span>
+          <div>
+            <div class="award-title">1st Prize — Inter-College Project Expo</div>
+            <div class="award-sub">Kuppam Engineering College, 2025</div>
+          </div>
+        </li>
+        <li class="award-item">
+          <span class="award-icon">🎤</span>
+          <div>
+            <div class="award-title">Best Presenter — International Conference</div>
+            <div class="award-sub">AI-based Medical Imaging Research, 2025</div>
+          </div>
+        </li>
+        <li class="award-item">
+          <span class="award-icon">📄</span>
+          <div>
+            <div class="award-title">IEEE Conference Publication</div>
+            <div class="award-sub">Co-author, Pneumonia Detection via Swin Transformer, 2025</div>
+          </div>
+        </li>
+        <li class="award-item">
+          <span class="award-icon">🎓</span>
+          <div>
+            <div class="award-title">CGPA 8.60 / 10</div>
+            <div class="award-sub">B.E. Computer Science &amp; Engineering</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT -->
+<section id="project">
+  <div class="reveal">
+    <p class="section-eyebrow">Featured Work</p>
+    <h2 class="section-title">Pneumonia Detection<br>Using Swin Transformer</h2>
+  </div>
+  <div class="project-card reveal">
+    <div class="project-header">
+      <p class="project-label">Final Year Project · IEEE Published · 2025</p>
+      <h3 class="project-title">AI-Powered Medical<br>Image Classification</h3>
+      <p class="project-subtitle">Chest X-ray analysis using state-of-the-art vision transformer architecture</p>
+    </div>
+    <div class="project-body">
+      <p class="project-desc">
+        Built an end-to-end deep learning system to classify pneumonia from chest X-ray images using the Swin Transformer architecture — a cutting-edge vision model that outperforms traditional CNNs on medical imaging tasks. The project covered everything from dataset preprocessing to production-ready model evaluation.
+      </p>
+      <ul class="project-highlights">
+        <li>Implemented Swin Transformer in Python using TensorFlow and Keras, leveraging transfer learning to maximise accuracy on a limited medical dataset</li>
+        <li>Designed a robust preprocessing pipeline — normalisation, flipping, rotation, zoom — to improve model generalisation and reduce overfitting</li>
+        <li>Benchmarked multiple architectures, iterating on hyperparameters to achieve optimal classification performance</li>
+        <li>Conducted systematic model evaluation using standard metrics, producing a publication-ready research paper</li>
+        <li>Co-authored and presented the findings at an IEEE conference to an international academic audience</li>
+      </ul>
+      <div class="tech-tags">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">TensorFlow</span>
+        <span class="tech-tag">Keras</span>
+        <span class="tech-tag">Swin Transformer</span>
+        <span class="tech-tag">Transfer Learning</span>
+        <span class="tech-tag">Data Augmentation</span>
+        <span class="tech-tag">Google Colab</span>
+        <span class="tech-tag">Jupyter Notebook</span>
+      </div>
+      <div class="project-awards">
+        <span class="award-chip">🥇 1st Prize — Project Expo</span>
+        <span class="award-chip">🎤 Best Presenter — Intl. Conference</span>
+        <span class="award-chip">📄 IEEE Publication 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <p class="section-eyebrow">Technical Skills</p>
+    <h2 class="section-title">What I build with</h2>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">HTML5</span>
+        <span class="skill-pill">CSS3</span>
+        <span class="skill-pill">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Backend &amp; APIs</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Django</span>
+        <span class="skill-pill">REST APIs</span>
+        <span class="skill-pill">Python Scripting</span>
+        <span class="skill-pill">MySQL</span>
+        <span class="skill-pill">SQLite</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Frontend</div>
+      <div class="skill-pills">
+        <span class="skill-pill">React.js</span>
+        <span class="skill-pill">Responsive Design</span>
+        <span class="skill-pill">CSS Layouts</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">AI / Machine Learning</div>
+      <div class="skill-pills">
+        <span class="skill-pill">TensorFlow</span>
+        <span class="skill-pill">Keras</span>
+        <span class="skill-pill">Swin Transformer</span>
+        <span class="skill-pill">Transfer Learning</span>
+        <span class="skill-pill">Data Augmentation</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Tools &amp; Workflow</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">GitHub</span>
+        <span class="skill-pill">VS Code</span>
+        <span class="skill-pill">Jupyter Notebook</span>
+        <span class="skill-pill">Google Colab</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Soft Skills</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Technical Writing</span>
+        <span class="skill-pill">Agile Teamwork</span>
+        <span class="skill-pill">Problem Solving</span>
+        <span class="skill-pill">Fast Learning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="reveal">
+    <p class="section-eyebrow">Education</p>
+    <h2 class="section-title">Academic background</h2>
+  </div>
+  <div class="edu-timeline reveal">
+    <div class="edu-item">
+      <div class="edu-year">2022 – 2026</div>
+      <div>
+        <div class="edu-degree">B.E. — Computer Science &amp; Engineering</div>
+        <div class="edu-school">Dr. T. Thimmaiah Institute of Technology, Karnataka</div>
+        <div class="edu-score">CGPA: 8.60 / 10.00</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">Graduated 2022</div>
+      <div>
+        <div class="edu-degree">Pre-University — Science (12th Grade)</div>
+        <div class="edu-school">Sahyadri Degree College</div>
+        <div class="edu-score">Aggregate: 88%</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">Graduated 2020</div>
+      <div>
+        <div class="edu-degree">10th Grade — CBSE</div>
+        <div class="edu-school">R.L. Jalappa Central School</div>
+        <div class="edu-score">Aggregate: 80%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-card reveal">
+    <div>
+      <h2 class="contact-headline">Let's build something <em>together.</em></h2>
+      <p class="contact-sub">I'm actively looking for remote software engineering roles. If you're hiring or know someone who is, I'd love to hear from you.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:noor.fathimaa0204@gmail.com" class="contact-link">
+        <span class="contact-link-icon">✉</span>
+        noor.fathimaa0204@gmail.com
+      </a>
+      <a href="tel:+918792930313" class="contact-link">
+        <span class="contact-link-icon">📞</span>
+        +91 87929 30313
+      </a>
+      <a href="file:///C:/Users/SHAIK%20MOHAMMED%20ABDAL/Downloads/noor_portfolio_3.html#" class="contact-link">
+        <span class="contact-link-icon">💼</span>
+        LinkedIn Profile
+      </a>
+      <a href="https://github.com/NoorFathima0204" target="_blank" class="contact-link">
+        <span class="contact-link-icon">🐙</span>
+        github.com/NoorFathima0204
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built by Noor Fathima · Kolar, Karnataka, India · Open to remote opportunities worldwide</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+
+
+
+</body></html>
